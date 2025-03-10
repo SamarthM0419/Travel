@@ -18,7 +18,7 @@ const userAuth = async (req, res, next) => {
     }
 
     req.user = user;
-    console.log(req.user);
+   
     next();
   } catch (err) {
     res.status(400).send("ERROR: " + err.message);
@@ -27,7 +27,7 @@ const userAuth = async (req, res, next) => {
 
 const adminAuth = async (req, res, next) => {
   try {
-    console.log("User role:", req.user?.role);
+   
     if (!req.user || req.user.role !== "admin") {
       return res.status(403).json({ message: "Unauthorized" });
     }

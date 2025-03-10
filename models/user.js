@@ -58,21 +58,29 @@ const userSchema = new mongoose.Schema(
           throw new Error("Phone number must be a valid 10-digit number");
         }
       },
-      profilePicture: {
+    },
+    profilePicture: {
+      type: String,
+      default: "https://geographyandyou.com/images/user-profile.png",
+      validate(value) {
+        if (!validator.isURL(value)) {
+          throw new Error("Invalid URL");
+        }
+      },
+    },
+    address: {
+      country: {
         type: String,
-        default: "https://geographyandyou.com/images/user-profile.png",
-        validate(value) {
-          if (!validator.isURL(value)) {
-            throw new Error("Invalid URL");
-          }
-        },
+        maxLength: 10,
       },
-      address: {
-        country: {
-          type: String,
-          maxLength: 10,
-        },
-      },
+    },
+    city: {
+      type: String,
+      maxLength: 20,
+    },
+    about: {
+      type: String,
+      maxLength: 200,
     },
   },
 

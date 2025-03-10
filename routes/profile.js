@@ -20,6 +20,9 @@ profileRouter.get("/profile/view", userAuth, async (req, res) => {
         age: user.age,
         gender: user.gender,
         id: user._id,
+        profilePicture: user.profilePicture,
+        city: user.city,
+        about: user.about,
       },
     });
   } catch (err) {
@@ -48,6 +51,9 @@ profileRouter.patch("/profile/edit", userAuth, async (req, res) => {
           age: user.age,
           gender: user.gender,
           id: user._id,
+          profilePicture: user.profilePicture,
+          city: user.city,
+          about: user.about,
         },
       },
     });

@@ -42,6 +42,7 @@ authRouter.post("/signUp", async (req, res) => {
         emailId: savedUser.emailId,
         role: savedUser.role,
         id: savedUser._id,
+        
       },
     });
   } catch (err) {
@@ -100,6 +101,5 @@ authRouter.post("/logout", async (req, res) => {
     res.status(400).send("ERROR : " + err.message);
   }
 });
-
 
 module.exports = authRouter;
